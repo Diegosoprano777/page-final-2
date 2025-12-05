@@ -101,3 +101,33 @@ footer {
     background: rgb(223, 12, 12);
     color: white;
 }
+
+
+.dashboard-bg {
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+  min-height: 100vh;
+}
+
+.dashboard-nav {
+  background: black;
+  border-bottom: 2px solid red;
+}
+
+.dashboard-card {
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid red;
+  padding: 40px 20px;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
+}
+
+.dashboard-footer {
+  margin-top: 60px;
+  background: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-top: 2px solid red;
+}

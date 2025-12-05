@@ -5,40 +5,65 @@
     <title>Zona Hip Hop - Inicio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
+    <!-- BOOTSTRAP 5.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    
+    <!-- ESTILOS PROPIOS -->
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-
-<nav class="navbar navbar-expand-lg px-3">
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <a class="navbar-brand" href="index.html">ZONA HIP HOP</a>
 
-    <div>
-        <a href="index.html" class="nav-link d-inline">Inicio</a>
-        <a href="noticias.html" class="nav-link d-inline">Noticias</a>
-        <a href="albums.html" class="nav-link d-inline">Recomendaciones</a>
-        <a href="sobre.html" class="nav-link d-inline">Nosotros</a>
+    <div class="collapse navbar-collapse">
+        <div class="navbar-nav">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="noticias.html" class="nav-link">Noticias</a>
+            <a href="albums.html" class="nav-link">Recomendaciones</a>
+            <a href="sobre.html" class="nav-link">Nosotros</a>
+        </div>
     </div>
 
-   
     <div id="zonaUsuario" class="ms-auto"></div>
 
-   
     <div id="botonesLogin" class="ms-auto">
-        <button class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#modalLogin">
-            Iniciar
-        </button>
-        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalRegistro">
-            Registrar
-        </button>
+        <button class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#modalLogin">Iniciar</button>
+        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalRegistro">Registrar</button>
     </div>
 </nav>
 
+<!-- ================= MENSAJE DE BIENVENIDA ================= -->
+<div class="container mt-4 text-center">
+    <h1>Bienvenido a Zona Hip Hop</h1>
+    <p>Todo lo que necesitas saber sobre hip hop y música urbana</p>
+</div>
 
+<!-- ================= CARRUSEL ================= -->
+<div id="carouselHipHop" class="carousel slide mt-4" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://cdn.wallpapersafari.com/82/29/i7rqB2.png" class="d-block w-100" alt="Slide 1">
+    </div>
+    <div class="carousel-item">
+      <img src="https://fc09.deviantart.net/fs71/f/2012/246/5/f/real_rap_by_danielboveportillo-d5despe.jpg" class="d-block w-100" alt="Slide 2">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.pinimg.com/736x/2f/bd/d4/2fbdd4c65c1698e9fde3627eef84444e.jpg" class="d-block w-100" alt="Slide 3">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselHipHop" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselHipHop" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
+
+<!-- ================= MODAL LOGIN ================= -->
 <div class="modal fade" id="modalLogin" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -50,17 +75,17 @@
 
       <div class="modal-body">
         <form>
-
           <div class="mb-3">
             <label>Correo</label>
-            <input type="email" id="loginCorreo" class="form-control" required>
+            <input type="email" id="loginCorreo" class="form-control">
+            <div id="errorLoginCorreo" class="text-danger small"></div>
           </div>
-
           <div class="mb-3">
             <label>Contraseña</label>
-            <input type="password" id="loginClave" class="form-control" required>
+            <input type="password" id="loginClave" class="form-control">
+            <div id="errorLoginClave" class="text-danger small"></div>
           </div>
-
+          <div id="errorLoginGeneral" class="text-danger fw-bold text-center"></div>
         </form>
       </div>
 
@@ -73,7 +98,7 @@
   </div>
 </div>
 
-
+<!-- ================= MODAL REGISTRO ================= -->
 <div class="modal fade" id="modalRegistro" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -85,22 +110,22 @@
 
       <div class="modal-body">
         <form>
-
           <div class="mb-3">
             <label>Nombre</label>
-            <input type="text" id="regNombre" class="form-control" required>
+            <input type="text" id="regNombre" class="form-control">
+            <div id="errorRegNombre" class="text-danger small"></div>
           </div>
-
           <div class="mb-3">
             <label>Correo</label>
-            <input type="email" id="regCorreo" class="form-control" required>
+            <input type="email" id="regCorreo" class="form-control">
+            <div id="errorRegCorreo" class="text-danger small"></div>
           </div>
-
           <div class="mb-3">
             <label>Contraseña</label>
-            <input type="password" id="regClave" class="form-control" required>
+            <input type="password" id="regClave" class="form-control">
+            <div id="errorRegClave" class="text-danger small"></div>
           </div>
-
+          <div id="errorRegistroGeneral" class="text-danger fw-bold text-center"></div>
         </form>
       </div>
 
@@ -113,47 +138,12 @@
   </div>
 </div>
 
-
-<div id="carouselExample" class="carousel slide mt-3" data-bs-ride="carousel">
-
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT19b_zCos1pp91DsRimln6BdoCoaTSKxrLfA&s" class="d-block w-100">
-        </div>
-
-        <div class="carousel-item">
-            <img src="https://64.media.tumblr.com/160d95ee694a6148a60564a198196332/0ecbadecb24cd9a2-70/s1280x1920/7bc53265060b26132a79bbc14c1aaaee4caddd6d.jpg" class="d-block w-100">
-        </div>
-
-        <div class="carousel-item">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRApsyJRp6P3rKPkG3-uZy55ipmez8a-K7VeA&s" class="d-block w-100">
-        </div>
-    </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </button>
-
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </button>
-</div>
-
-
-<section id="perfil" class="text-center">
-    <h2 class="text-danger">Zona Hip Hop</h2>
-    <p>El movimiento urbano en su máxima expresión</p>
-</section>
-
-
-
-
-
-<footer>
-    <p>© 2025 Zona Hip Hop</p>
+<!-- ================= FOOTER ================= -->
+<footer class="bg-dark text-white py-3 mt-4">
+    <p class="text-center mb-0">© 2025 Zona Hip Hop</p>
 </footer>
 
-
+<!-- ================= SCRIPTS ================= -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
 

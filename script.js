@@ -1,146 +1,110 @@
-
-function cargarNoticia(id) {
-    let titulo = document.getElementById("modalTitulo");
-    let texto = document.getElementById("modalTexto");
-
-    if (!titulo || !texto) return;
-
-    if (id === "principal") {
-        titulo.innerText = "1 AÑO DE ANARCOLIRYKOZ";
-        texto.innerText = "A-Z son rap en estado puro y sin concesiones. Un proyecto que nació en 2022 y que ha conseguido en tan solo un año consolidarse como uno de los referentes del rap underground en español. Con letras afiladas, ritmos contundentes y una actitud rebelde, A-Z ha sabido captar la atención de una audiencia ávida de autenticidad y frescura en la escena musical actual. Su enfoque directo y sin filtros les ha permitido conectar con un público diverso, que valora la honestidad y la pasión que transmiten en cada una de sus canciones. A lo largo de este primer año, A-Z ha demostrado que el rap puede ser una herramienta poderosa para expresar ideas, emociones y realidades sociales, consolidándose como una voz imprescindible en el panorama musical contemporáneo. ¡Felicidades a A-Z por este primer año de éxito y que vengan muchos más!       ";
-    }
-
-    if (id === "n1") {
-        titulo.innerText = "Red Bull Batalla";
-        texto.innerText = "Red Bull celebra 20 años de freestyle donde se reunene muchos mc por el titulo de 20 años en este torneo se enfrentan mcs aczino,fat n,skone,blon,chuache,jonko,stick,errecé entre otros grandes mcs del panorama nacional e internacional.";
-    }
-
-    if (id === "n2") {
-        titulo.innerText = "Rap y Reggae";
-        texto.innerText = `Rap y reggae: dos mundos distintos, pero con el mismo latido.
-El rap llega como un golpe seco, directo, una barra que corta el silencio.
-El reggae entra suave, como brisa, como un tambor que te abraza y te baja las revoluciones.
-
-Cuando se juntan, nace una energía única: conciencia con ritmo, calle con raíces, fuego con calma.
-Es la voz del barrio, del que sueña, del que resiste; es la vibra que te eleva mientras la letra te aterriza.
-Rap y reggae: unión perfecta entre la protesta y la paz, entre el corazón que late fuerte y el alma que se mantiene firme.
-
-Dos estilos, una cultura…
-Una misma verdad: la música también es revolución.`;
-    }
-}
-
-
-function enviarContacto() {
-    let form = document.getElementById("formContacto");
-
-    if (!form.checkValidity()) {
-        form.classList.add("was-validated");
-        return;
-    }
-
-    alert("Mensaje enviado correctamente");
-
-    form.reset();
-    form.classList.remove("was-validated");
-
-    const modal = bootstrap.Modal.getInstance(
-        document.getElementById("modalContacto")
-    );
-    modal.hide();
-}
-
-
-
+// ================================
+// REGISTRO
+// ================================
 function registrarUsuario() {
-    let nombre = document.getElementById("regNombre").value;
-    let correo = document.getElementById("regCorreo").value;
-    let clave = document.getElementById("regClave").value;
+  let nombre = regNombre.value.trim();
+  let correo = regCorreo.value.trim();
+  let clave = regClave.value.trim();
 
-    if (nombre === "" || correo === "" || clave === "") {
-        alert("Completa todos los campos");
-        return;
-    }
+  errorRegNombre.textContent = "";
+  errorRegCorreo.textContent = "";
+  errorRegClave.textContent = "";
+  errorRegistroGeneral.textContent = "";
 
-    let usuario = {
-        nombre: nombre,
-        correo: correo,
-        clave: clave
-    };
+  let valido = true;
 
-    localStorage.setItem("usuario", JSON.stringify(usuario));
-    localStorage.setItem("sesion", "activa");
+  if (nombre.length < 3) {
+    errorRegNombre.textContent = "El nombre debe tener mínimo 3 letras";
+    valido = false;
+  }
 
-    alert("Registro exitoso");
+  if (!correo.includes("@") || !correo.includes(".")) {
+    errorRegCorreo.textContent = "Correo inválido";
+    valido = false;
+  }
 
-    let modal = bootstrap.Modal.getInstance(
-        document.getElementById("modalRegistro")
-    );
-    modal.hide();
+  if (clave.length < 5) {
+    errorRegClave.textContent = "La contraseña debe tener mínimo 5 caracteres";
+    valido = false;
+  }
 
-    mostrarUsuario();
+  if (!valido) return;
+
+  let usuario = { nombre, correo, clave };
+  localStorage.setItem("usuario", JSON.stringify(usuario));
+  sessionStorage.setItem("sesion", "activa");
+
+  mostrarUsuario();
+  location.href = "dashboard.html";
 }
 
-
+// ================================
+// LOGIN
+// ================================
 function iniciarSesion() {
-    let correo = document.getElementById("loginCorreo").value;
-    let clave = document.getElementById("loginClave").value;
+  let correo = loginCorreo.value.trim();
+  let clave = loginClave.value.trim();
 
-    let usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+  errorLoginCorreo.textContent = "";
+  errorLoginClave.textContent = "";
+  errorLoginGeneral.textContent = "";
 
-    if (!usuarioGuardado) {
-        alert("No hay usuarios registrados");
-        return;
-    }
+  let valido = true;
 
-    if (
-        correo === usuarioGuardado.correo &&
-        clave === usuarioGuardado.clave
-    ) {
-        localStorage.setItem("sesion", "activa");
-        alert("Bienvenido " + usuarioGuardado.nombre);
+  if (!correo.includes("@")) {
+    errorLoginCorreo.textContent = "Correo inválido";
+    valido = false;
+  }
 
-        let modal = bootstrap.Modal.getInstance(
-            document.getElementById("modalLogin")
-        );
-        modal.hide();
+  if (clave.length < 5) {
+    errorLoginClave.textContent = "Contraseña inválida";
+    valido = false;
+  }
 
-        mostrarUsuario();
-    } else {
-        alert("Datos incorrectos");
-    }
+  if (!valido) return;
+
+  let usuario = JSON.parse(localStorage.getItem("usuario"));
+
+  if (!usuario) {
+    errorLoginGeneral.textContent = "No hay usuarios registrados";
+    return;
+  }
+
+  if (correo === usuario.correo && clave === usuario.clave) {
+    sessionStorage.setItem("sesion", "activa");
+    location.href = "dashboard.html";
+  } else {
+    errorLoginGeneral.textContent = "Correo o contraseña incorrectos";
+  }
 }
 
-
+// ================================
+// MOSTRAR USUARIO
+// ================================
 function mostrarUsuario() {
-    let sesion = localStorage.getItem("sesion");
-    let usuario = JSON.parse(localStorage.getItem("usuario"));
+  let sesion = sessionStorage.getItem("sesion");
+  let usuario = JSON.parse(localStorage.getItem("usuario"));
 
-    let zonaUsuario = document.getElementById("zonaUsuario");
-    let botonesLogin = document.getElementById("botonesLogin");
+  if (!zonaUsuario || !botonesLogin) return;
 
-    if (sesion === "activa" && usuario) {
-        zonaUsuario.innerHTML = `
-            <span class="text-danger fw-bold me-2">
-                ${usuario.nombre}
-            </span>
-            <button class="btn btn-sm btn-outline-danger" onclick="cerrarSesion()">
-                Salir
-            </button>
-        `;
-
-        botonesLogin.style.display = "none";
-    } else {
-        zonaUsuario.innerHTML = "";
-        botonesLogin.style.display = "block";
-    }
+  if (sesion === "activa" && usuario) {
+    zonaUsuario.innerHTML = `
+      <span class="text-danger fw-bold me-2">${usuario.nombre}</span>
+      <button class="btn btn-sm btn-outline-danger" onclick="cerrarSesion()">Salir</button>
+    `;
+    botonesLogin.style.display = "none";
+  } else {
+    zonaUsuario.innerHTML = "";
+    botonesLogin.style.display = "block";
+  }
 }
 
-
+// ================================
+// CERRAR SESIÓN
+// ================================
 function cerrarSesion() {
-    localStorage.removeItem("sesion");
-    location.reload();
+  sessionStorage.removeItem("sesion");
+  location.reload();
 }
-
 
 document.addEventListener("DOMContentLoaded", mostrarUsuario);
