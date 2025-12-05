@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Zona Hip Hop - Nosotros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg px-3">
+    <a class="navbar-brand" href="index.html">ZONA HIP HOP</a>
+    <div>
+        <a href="index.html" class="nav-link d-inline">Inicio</a>
+        <a href="noticias.html" class="nav-link d-inline">Noticias</a>
+        <a href="albums.html" class="nav-link d-inline">Recomendaciones</a>
+        <a href="sobre.html" class="nav-link d-inline">Nosotros</a>
+    </div>
+</nav>
+
+
+<div class="container my-5">
+
+    <div class="p-4 bg-white shadow rounded border-start border-4" style="border-color:black;">
+        <h2 class="text-center text-danger mb-4">Sobre Nosotros</h2>
+
+        <p>
+            Zona Hip Hop es un espacio digital dedicado a la cultura urbana, donde el rap,
+            el freestyle, las historias de la calle y el movimiento real tienen voz.
+        </p>
+
+        <p>
+            No seguimos modas, seguimos la esencia. Aquí se habla de rap sin filtros,
+            de discos que marcaron generaciones y de artistas que representan la calle de verdad.
+        </p>
+
+        <p>En Zona Hip Hop encontrarás:</p>
+
+        <ul>
+            <li>Noticias reales del movimiento</li>
+            <li>Recomendaciones de álbumes clásicos y nuevos</li>
+            <li>Contenido visual urbano</li>
+            <li>Historia, cultura y respeto por el rap</li>
+            <li>Espacios interactivos y creativos</li>
+        </ul>
+
+        <h4 class="text-center text-danger fw-bold mt-4">
+            Zona Hip Hop: Donde el rap nunca muere.
+        </h4>
+
+        
+        <div class="text-center mt-4">
+            <button class="btn btn-danger px-4 py-2" data-bs-toggle="modal" data-bs-target="#modalContacto">
+                Contactarnos
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalContacto" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Contactarnos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <form id="formContacto" novalidate>
+
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" id="cNombre" class="form-control" required>
+            <div class="invalid-feedback">Ingresa un nombre válido.</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Correo</label>
+            <input type="email" id="cCorreo" class="form-control" required>
+            <div class="invalid-feedback">Ingresa un correo válido.</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Mensaje</label>
+            <textarea id="cMensaje" class="form-control" required></textarea>
+            <div class="invalid-feedback">Escribe un mensaje válido.</div>
+          </div>
+
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button class="btn btn-danger" onclick="enviarContacto()">Enviar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<footer>
+    <p>© 2025 Zona Hip Hop</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

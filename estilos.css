@@ -1,0 +1,103 @@
+
+body {
+    background: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+
+.navbar {
+    background: #000;
+}
+
+.navbar-brand {
+    color: rgb(197, 21, 21) !important;
+    font-weight: bold;
+}
+
+.navbar a {
+    color: white !important;
+    margin-left: 15px;
+}
+
+.navbar a:hover {
+    color: rgb(224, 0, 0) !important;
+}
+
+
+footer {
+    background: black;
+    color: white;
+    padding: 20px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+
+.carousel-item img {
+    height: 420px;
+    object-fit: cover;
+}
+
+
+.btn-ver,
+.btn-escuchar {
+    background: rgb(10, 10, 10);
+    color: white;
+    border: none;
+}
+
+.btn-ver:hover,
+.btn-escuchar:hover {
+    opacity: 0.8;
+}
+
+
+#perfil {
+    background: white;
+    width: 80%;
+    border-left: 6px solid rgb(223, 12, 12);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(218, 0, 0, 0.20);
+}
+
+
+.principal-card,
+.lateral-card,
+.album-card {
+    background: white;
+    border-left: 6px solid rgb(223, 12, 12);
+    border-radius: 10px;
+    padding-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(218, 0, 0, 0.15);
+    transition: 0.3s;
+}
+
+.principal-card:hover,
+.lateral-card:hover,
+.album-card:hover {
+    transform: translateY(-8px);
+}
+
+.principal-card img {
+    height: 350px;
+    object-fit: cover;
+}
+
+.lateral-card img {
+    height: 160px;
+    object-fit: cover;
+}
+
+.album-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+
+.modal-header {
+    background: rgb(223, 12, 12);
+    color: white;
+}
